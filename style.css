@@ -212,6 +212,396 @@ nav ul li a:hover::after {
     cursor: pointer;
 }
 
+/* Estilos para los modales de pago */
+/* Modal de pago con scroll */
+    .payment-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        z-index: 3000;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .modal-content {
+        background: var(--darker);
+        border-radius: 15px;
+        width: 90%;
+        max-width: 500px;
+        max-height: 90vh; /* Altura máxima del modal */
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        position: relative;
+        border: 1px solid rgba(255, 77, 77, 0.3);
+        box-shadow: 0 10px 50px rgba(255, 77, 77, 0.2);
+    }
+    
+    .modal-header {
+        padding: 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        position: sticky;
+        top: 0;
+        background: var(--darker);
+        z-index: 10;
+    }
+    
+    .modal-header h3 {
+        font-size: 1.8rem;
+        text-align: center;
+        background: linear-gradient(90deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    
+    .modal-body {
+        padding: 20px;
+        overflow-y: auto; /* Scroll vertical */
+        flex-grow: 1;
+        max-height: calc(90vh - 150px);
+    }
+    
+    /* Estilo de la barra de scroll */
+    .modal-body::-webkit-scrollbar {
+        width: 8px;
+    }
+    
+    .modal-body::-webkit-scrollbar-track {
+        background: rgba(30, 30, 30, 0.5);
+        border-radius: 4px;
+    }
+    
+    .modal-body::-webkit-scrollbar-thumb {
+        background: var(--accent);
+        border-radius: 4px;
+    }
+    
+    .modal-footer {
+        padding: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        background: var(--darker);
+        position: sticky;
+        bottom: 0;
+    }
+    
+    .payment-service-info {
+        background: rgba(42, 42, 42, 0.7);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        border-left: 3px solid var(--accent);
+    }
+    
+    .payment-service-info h4 {
+        font-size: 1.4rem;
+        margin-bottom: 10px;
+        color: var(--light);
+    }
+    
+    .payment-service-info p {
+        color: #aaa;
+        font-size: 1.1rem;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    .form-group label {
+        display: block;
+        margin-bottom: 8px;
+        color: #ddd;
+    }
+    
+    .form-group input {
+        width: 100%;
+        padding: 14px;
+        background: rgba(30, 30, 30, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+        color: var(--light);
+        font-size: 1rem;
+    }
+    
+    .form-group input:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+    
+    .payment-methods {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 15px;
+        margin: 20px 0;
+    }
+    
+    .payment-method {
+        background: rgba(42, 42, 42, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 15px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+    }
+    
+    .payment-method:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent);
+        box-shadow: 0 5px 15px rgba(0, 194, 255, 0.2);
+    }
+    
+    .payment-method.active {
+        background: rgba(0, 194, 255, 0.1);
+        border-color: var(--accent);
+    }
+    
+    .payment-method i {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        display: block;
+    }
+    
+    .payment-method.paypal i {
+        color: #003087;
+    }
+    
+    .payment-method.mercadopago i {
+        color: #00b1ea;
+    }
+    
+    .payment-method.creditcard i {
+        color: #ff9e00;
+    }
+    
+    .payment-method.oxxo i {
+        color: #c60a0a;
+    }
+    
+    .payment-details {
+        margin: 25px 0;
+        padding: 20px;
+        background: rgba(30, 30, 30, 0.7);
+        border-radius: 10px;
+        border-left: 3px solid var(--accent);
+    }
+    
+    .payment-details h4 {
+        margin-bottom: 15px;
+        color: var(--light);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .payment-details p {
+        color: #aaa;
+        margin-bottom: 10px;
+        line-height: 1.6;
+    }
+    
+    .payment-btn {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+    
+    .close-modal {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: none;
+        border: none;
+        color: #aaa;
+        font-size: 1.8rem;
+        cursor: pointer;
+        transition: var(--transition);
+        z-index: 20;
+    }
+    
+    .close-modal:hover {
+        color: var(--primary);
+        transform: rotate(90deg);
+    }
+
+.payment-modal, .confirmation-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 3000;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-modal .modal-content {
+    background: var(--darker);
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(0, 194, 255, 0.3);
+    box-shadow: 0 10px 50px rgba(0, 194, 255, 0.2);
+}
+
+.confirmation-header {
+    margin-bottom: 25px;
+}
+
+.confirmation-header i {
+    font-size: 4rem;
+    color: #25D366;
+    margin-bottom: 15px;
+}
+
+.confirmation-header h3 {
+    font-size: 2rem;
+    color: var(--light);
+}
+
+.confirmation-body p {
+    color: #ddd;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.order-summary {
+    background: rgba(30, 30, 30, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 25px 0;
+    text-align: left;
+    border-left: 3px solid var(--accent);
+}
+
+.order-summary p {
+    margin: 10px 0;
+    color: #ddd;
+}
+
+.payment-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.payment-method {
+    background: rgba(42, 42, 42, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 15px 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.payment-method:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+    box-shadow: 0 5px 15px rgba(0, 194, 255, 0.2);
+}
+
+.payment-method.active {
+    background: rgba(0, 194, 255, 0.1);
+    border-color: var(--accent);
+}
+
+.payment-method i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.payment-method.paypal i {
+    color: #003087;
+}
+
+.payment-method.mercadopago i {
+    color: #00b1ea;
+}
+
+.payment-method.creditcard i {
+    color: #ff9e00;
+}
+
+.payment-method.oxxo i {
+    color: #c60a0a;
+}
+
+#paymentDetails {
+    margin: 25px 0;
+    padding: 20px;
+    background: rgba(30, 30, 30, 0.7);
+    border-radius: 10px;
+    border-left: 3px solid var(--accent);
+    display: none;
+}
+
+.payment-details h4 {
+    margin-bottom: 15px;
+    color: var(--light);
+}
+
+.payment-details p {
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+.credit-card-form .form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.credit-card-form .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.oxxo-instructions {
+    text-align: left;
+}
+
+.oxxo-instructions ol {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.oxxo-instructions li {
+    margin-bottom: 10px;
+    color: #ddd;
+}
+
+.reference-number {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    margin: 20px 0;
+    font-weight: 700;
+    color: var(--light);
+}
+
+.payment-btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
 /* Hero Section */
 .hero {
     height: 100vh;

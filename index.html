@@ -269,6 +269,79 @@
         </div>
     </section>
 
+    <!-- Modal de Métodos de Pago -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closePaymentModal">&times;</button>
+            <div class="modal-header">
+                <h3>Finalizar Compra</h3>
+            </div>
+            <div class="modal-body">
+                <div class="payment-service-info">
+                    <h4 id="paymentServiceName">Instagram Growth</h4>
+                    <p id="paymentServicePrice">$9.99 / 1,000 seguidores</p>
+                </div>
+                
+                <form class="payment-form" id="paymentForm">
+                    <div class="form-group">
+                        <label for="social-username">Usuario de Red Social:</label>
+                        <input type="text" id="social-username" required placeholder="@tunombredeusuario">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Método de Pago:</label>
+                        <div class="payment-methods">
+                            <div class="payment-method" data-method="paypal">
+                                <i class="fab fa-paypal"></i>
+                                <span>PayPal</span>
+                            </div>
+                            <div class="payment-method" data-method="mercadopago">
+                                <i class="fas fa-money-bill-wave"></i>
+                                <span>Mercado Pago</span>
+                            </div>
+                            <div class="payment-method" data-method="creditcard">
+                                <i class="far fa-credit-card"></i>
+                                <span>Tarjeta Crédito/Débito</span>
+                            </div>
+                            <div class="payment-method" data-method="oxxo">
+                                <i class="fas fa-store"></i>
+                                <span>Efectivo en OXXO</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div id="paymentDetails">
+                        <!-- Aquí se mostrarán los detalles específicos de cada método -->
+                    </div>
+                    
+                    <button type="submit" class="btn payment-btn" id="processPayment">
+                        <i class="fas fa-lock"></i> Pagar Ahora
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación de Pago -->
+    <div class="confirmation-modal" id="confirmationModal">
+        <div class="modal-content">
+            <div class="confirmation-header">
+                <i class="fas fa-check-circle"></i>
+                <h3>¡Pago Completado!</h3>
+            </div>
+            <div class="confirmation-body">
+                <p id="confirmationMessage">Tu compra se ha procesado exitosamente. Recibirás tus seguidores en las próximas 24 horas.</p>
+                <div class="order-summary">
+                    <p><strong>Servicio:</strong> <span id="confirmationService">Instagram Growth</span></p>
+                    <p><strong>Usuario:</strong> <span id="confirmationUsername">@ejemplo</span></p>
+                    <p><strong>Método:</strong> <span id="confirmationMethod">PayPal</span></p>
+                    <p><strong>ID de Transacción:</strong> <span id="transactionId">TX-789456123</span></p>
+                </div>
+                <button class="btn" id="closeConfirmationModal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
