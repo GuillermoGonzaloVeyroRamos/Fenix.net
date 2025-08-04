@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fenix.net - Seguidores para Redes Sociales</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <!-- WhatsApp Modal -->
+    <div class="whatsapp-modal" id="whatsappModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">&times;</button>
+            <div class="modal-header">
+                <h3>¡Confirmar Compra!</h3>
+            </div>
+            <div class="modal-body">
+                <p>Estás a punto de adquirir el siguiente paquete:</p>
+                <div class="modal-service-info" id="serviceInfo">
+                    <h4 id="serviceName">Instagram Growth</h4>
+                    <p id="servicePrice">$9.99 / 1,000 seguidores</p>
+                    <p id="serviceFeatures">Entrega en 24-48 horas, perfiles reales</p>
+                </div>
+                <p>Ingresa tu usuario de Instagram para continuar:</p>
+                <form class="modal-form" id="whatsappForm">
+                    <div class="form-group">
+                        <label for="username">Usuario de Instagram:</label>
+                        <input type="text" id="username" required placeholder="@tunombredeusuario">
+                    </div>
+                    <a href="#" class="whatsapp-btn" id="sendWhatsapp">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <h1>Fenix<span>.net</span></h1>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Inicio</a></li>
+                    <li><a href="#services">Servicios</a></li>
+                    <li><a href="#how-it-works">Cómo Funciona</a></li>
+                    <li><a href="#testimonials">Testimonios</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                    <li><a href="#login" class="btn-secondary">Panel Cliente</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Impulsa tu <span>presencia digital</span> al instante</h1>
+                <p>Consigue miles de seguidores reales y aumenta tu credibilidad en redes sociales con nuestros servicios premium. ¡Haz despegar tu marca hoy mismo!</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn">Ver Paquetes</a>
+                    <a href="#how-it-works" class="btn btn-secondary">Cómo Funciona</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <h3>50K+</h3>
+                        <p>Clientes Satisfechos</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>99.8%</h3>
+                        <p>Tasa de Entrega</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>24/7</h3>
+                        <p>Soporte Premium</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="social-icons">
+            <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Paquetes diseñados para impulsar tu crecimiento en redes sociales con resultados inmediatos</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram Growth</h3>
+                    <ul class="service-features">
+                        <li>Seguidores de alta calidad</li>
+                        <li>Entrega en 24-48 horas</li>
+                        <li>Perfiles reales y activos</li>
+                        <li>Garantía de reemplazo</li>
+                        <li>Soporte 24/7</li>
+                    </ul>
+                    <div class="service-price">
+                        $9.99 <span>/ 1,000 seguidores</span>
+                    </div>
+                    <button class="btn btn-service" data-service="Instagram Growth" data-price="$9.99 / 1,000 seguidores" data-features="Entrega en 24-48 horas, Perfiles reales, Garantía de reemplazo">Comprar Ahora</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok Boost</h3>
+                    <ul class="service-features">
+                        <li>Seguidores garantizados</li>
+                        <li>Entrega súper rápida</li>
+                        <li>Cuentas reales</li>
+                        <li>Sin contraseña requerida</li>
+                        <li>Protección de cuenta</li>
+                    </ul>
+                    <div class="service-price">
+                        $12.99 <span>/ 1,000 seguidores</span>
+                    </div>
+                    <button class="btn btn-service" data-service="TikTok Boost" data-price="$12.99 / 1,000 seguidores" data-features="Entrega súper rápida, Cuentas reales, Protección de cuenta">Comprar Ahora</button>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube Authority</h3>
+                    <ul class="service-features">
+                        <li>Suscriptores reales</li>
+                        <li>Entrega gradual</li>
+                        <li>Mejora el engagement</li>
+                        <li>Sin riesgo para tu canal</li>
+                        <li>Resultados duraderos</li>
+                    </ul>
+                    <div class="service-price">
+                        $19.99 <span>/ 1,000 suscriptores</span>
+                    </div>
+                    <button class="btn btn-service" data-service="YouTube Authority" data-price="$19.99 / 1,000 suscriptores" data-features="Entrega gradual, Suscriptores reales, Sin riesgo para tu canal">Comprar Ahora</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Cómo Funciona?</h2>
+                <p>En solo 4 sencillos pasos podrás aumentar tu presencia en redes sociales</p>
+            </div>
+            <div class="steps-container">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Selecciona tu Red</h3>
+                    <p>Elige la plataforma donde quieres aumentar tu presencia (Instagram, TikTok, YouTube, etc.)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Elige tu Paquete</h3>
+                    <p>Selecciona la cantidad de seguidores que necesitas y completa tu compra</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                        <h3>Proporciona tu Usuario</h3>
+                        <p>Ingresa solo tu nombre de usuario (nunca pedimos contraseñas)</p>
+                    </div>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h3>Disfruta los Resultados</h3>
+                    <p>Recibe tus nuevos seguidores en el tiempo prometido y observa cómo crece tu cuenta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimonios Reales</h2>
+                <p>Lo que nuestros clientes dicen sobre su experiencia con Fenix.net</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>¡Increíble servicio! Compré 5,000 seguidores para mi cuenta de Instagram y en menos de 24 horas ya estaba viendo resultados. Los seguidores parecen reales y han aumentado mi engagement. Definitivamente volveré a comprar.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Sofía Martínez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sofía Martínez</h4>
+                            <p>Influencer de Moda</p>
+                            <div class="social-stats">
+                                <span><i class="fab fa-instagram"></i> 82K</span>
+                                <span><i class="fab fa-tiktok"></i> 124K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Como pequeño negocio, necesitaba aumentar mi credibilidad rápidamente. Fenix.net me ayudó a conseguir 10,000 seguidores en TikTok, lo que hizo que mi cuenta pareciera más establecida. ¡Las ventas aumentaron un 30% en dos semanas!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Rodríguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Propietario de Negocio</p>
+                            <div class="social-stats">
+                                <span><i class="fab fa-tiktok"></i> 56K</span>
+                                <span><i class="fab fa-facebook"></i> 22K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>Estaba desesperado por hacer crecer mi canal de YouTube para monetizar. Compré 2,000 suscriptores y no solo llegaron rápido, sino que también aumentaron mis visualizaciones. Ahora estoy generando ingresos gracias a Fenix.net.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Javier López">
+                        </div>
+                        <div class="author-info">
+                            <h4>Javier López</h4>
+                            <p>Creador de Contenido</p>
+                            <div class="social-stats">
+                                <span><i class="fab fa-youtube"></i> 34K</span>
+                                <span><i class="fab fa-twitch"></i> 15K</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para transformar tu presencia digital?</h2>
+                <p>Únete a miles de clientes satisfechos y lleva tus redes sociales al siguiente nivel hoy mismo</p>
+                <a href="#services" class="btn">Comenzar Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <h2>Fenix<span>.net</span></h2>
+                    </div>
+                    <p>Líderes en crecimiento de redes sociales desde 2018. Ofrecemos servicios premium para impulsar tu presencia digital con resultados inmediatos y garantizados.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="#">Seguidores Instagram</a></li>
+                        <li><a href="#">Suscriptores YouTube</a></li>
+                        <li><a href="#">Seguidores TikTok</a></li>
+                        <li><a href="#">Likes y Comentarios</a></li>
+                        <li><a href="#">Servicios para Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contacto</h4>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: +1 (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> soporte@fenix.net</p>
+                    <p><i class="fas fa-headset"></i> Soporte 24/7</p>
+                    <p><i class="fas fa-lock"></i> Pagos Seguros</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Fenix.net. Todos los derechos reservados. <span style="color: #777;">Este sitio no está afiliado a Instagram, TikTok, YouTube ni a ninguna de sus empresas matriz.</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
