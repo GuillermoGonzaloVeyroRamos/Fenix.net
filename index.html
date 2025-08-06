@@ -6,6 +6,8 @@
     <title>Fenix.net - Seguidores para Redes Sociales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -1313,7 +1315,7 @@
                 const orderId = 'FNX' + Date.now().toString().slice(-6);
                 const date = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
 
-                const whatsappMessage = `Hola!%0A%0AGracias por adquirir tu paquete :)%0A- Id pedido: ${orderId}%0A- Paquete Adquirido: ${currentPackage} ($${currentPrice})%0A- Fecha: ${date}%0A- Link del perfil: ${profileLink}%0A%0A- Método de pago: ${paymentMethod}%0A%0A${currentPaymentInfo}%0A%0APor favor, envía tu comprobante de pago a este número para procesar tu pedido.`;
+                const whatsappMessage = `Hola!\n\nGracias por adquirir tu paquete :)\n- Id pedido: ${orderId}\n- Paquete Adquirido: ${currentPackage} ($${currentPrice})\n- Fecha: ${date}\n- Link del perfil: ${profileLink}\n\n- Método de pago: ${paymentMethod}\n\n${currentPaymentInfo}\n\nPor favor, envía tu comprobante de pago a este número para procesar tu pedido.`;
 
                 const whatsappUrl = `https://wa.me/5217751504356?text=${encodeURIComponent(whatsappMessage)}`;
 
