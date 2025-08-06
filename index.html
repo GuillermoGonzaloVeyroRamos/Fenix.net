@@ -5,62 +5,946 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fenix.net - Seguidores para Redes Sociales</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary: #FF4D4D;
+            --secondary: #FFD700;
+            --accent: #FFA500;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --gray: #1a1a1a;
+            --light: #f8f9fa;
+            --transition: all 0.4s ease;
+            --card-bg: rgba(30, 30, 30, 0.7);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(255, 77, 77, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 194, 255, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(255, 158, 0, 0.03) 0%, transparent 40%);
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 20px rgba(255, 77, 77, 0.3);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            transition: var(--transition);
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 25px rgba(255, 77, 77, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            box-shadow: none;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 194, 255, 0.1);
+            color: var(--light);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .logo {
+            height: 45px;
+            width: auto;
+            transition: var(--transition);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.05rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .mobile-menu-btn:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(10, 10, 10, 0.8) 0%, rgba(5, 5, 5, 0.9) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 700px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: #ddd;
+            max-width: 600px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .hero-stats {
+            display: flex;
+            margin-top: 60px;
+            gap: 50px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2.8rem;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: #aaa;
+            margin: 0;
+        }
+
+        .social-icons {
+            position: absolute;
+            right: 5%;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        a{
+            text-decoration: none;
+        }
+
+        .social-icons a {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--card-bg);
+            color: var(--light);
+            font-size: 1.8rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-5px);
+            background: var(--gray);
+        }
+
+        .social-icons .instagram { color: #E1306C; }
+        .social-icons .tiktok { color: #69C9D0; }
+        .social-icons .youtube { color: #1DA1F2; }
+        .social-icons .twitter { color: #1DA1F2; }
+
+        .services {
+            background: var(--darker);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(255, 77, 77, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(0, 194, 255, 0.05) 0%, transparent 20%);
+            z-index: 0;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 77, 77, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .service-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .service-features li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 25px 0;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .service-price span {
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+
+        .steps-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--light);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: 700;
+            line-height: 60px;
+            margin-bottom: 25px;
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .testimonials {
+            background: var(--darker);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px 30px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 77, 77, 0.1);
+            font-family: serif;
+            line-height: 1;
+        }
+
+        .testimonial-content {
+            margin-bottom: 20px;
+            color: #ddd;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--accent);
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .author-info p {
+            color: var(--accent);
+            font-size: 0.9rem;
+        }
+
+        .social-stats {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .social-stats span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.9), rgba(5, 5, 5, 0.95)),
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: #ddd;
+        }
+
+        .whatsapp-float {
+            text-decoration: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        footer {
+            background: var(--darker);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-logo img {
+            height: 50px;
+        }
+
+        .footer-about p {
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            color: var(--light);
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            color: var(--light);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #aaa;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #aaa;
+        }
+
+        .footer-contact p i {
+            color: var(--accent);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .social-icons {
+                position: static;
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 40px;
+                transform: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            nav {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 10, 0.98);
+                transition: var(--transition);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                left: 0;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 20px;
+                gap: 25px;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul li a {
+                font-size: 1.2rem;
+                padding: 12px 0;
+            }
+
+            .logo {
+                height: 40px;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+
+            .whatsapp-float {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        .modal {
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .modal.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            margin: auto;
+            padding: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 90%;
+            max-width: 500px;
+            border-radius: 20px;
+            position: relative;
+            text-align: center;
+            transform: translateY(-50px);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .modal-content h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .modal-form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .modal-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .modal-form-group input, .modal-form-group select {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: var(--gray);
+            color: var(--light);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .modal-form-group input:focus, .modal-form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .modal-error-message {
+            color: var(--primary);
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            display: none;
+        }
+        
+        /* NUEVO: Estilos para la información de pago */
+        .payment-info-box {
+            background-color: #212121;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-top: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .payment-info-box h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .payment-info-box p {
+            margin: 0;
+            color: #ccc;
+        }
+
+    </style>
 </head>
 <body>
-    <!-- WhatsApp Modal -->
-    <div class="whatsapp-modal" id="whatsappModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">&times;</button>
-            <div class="modal-header">
-                <h3>¡Confirmar Compra!</h3>
-            </div>
-            <div class="modal-body">
-                <p>Estás a punto de adquirir el siguiente paquete:</p>
-                <div class="modal-service-info" id="serviceInfo">
-                    <h4 id="serviceName">Instagram Growth</h4>
-                    <p id="servicePrice">$9.99 / 1,000 seguidores</p>
-                    <p id="serviceFeatures">Entrega en 24-48 horas, perfiles reales</p>
-                </div>
-                <p>Ingresa tu usuario de Instagram para continuar:</p>
-                <form class="modal-form" id="whatsappForm">
-                    <div class="form-group">
-                        <label for="username">Usuario de Instagram:</label>
-                        <input type="text" id="username" required placeholder="@tunombredeusuario">
-                    </div>
-                    <a href="#" class="whatsapp-btn" id="sendWhatsapp">
-                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-                    </a>
-                </form>
-            </div>
-        </div>
-    </div>
+    <a href="https://wa.me/5217751504356" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-    <!-- Header -->
     <header>
         <div class="container header-container">
-            <div class="logo">
-                <h1>Fenix<span>.net</span></h1>
+            <div class="logo-container">
+                <img src="logo.png" alt="Fenix.net" class="logo">
+                <nav id="navMenu">
+                    <ul>
+                        <li><a href="#home">Inicio</a></li>
+                        <li><a href="#services">Servicios</a></li>
+                        <li><a href="#how-it-works">Cómo Funciona</a></li>
+                        <li><a href="#testimonials">Testimonios</a></li>
+                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </nav>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
             </button>
-            <nav>
-                <ul id="navMenu">
-                    <li><a href="#home">Inicio</a></li>
-                    <li><a href="#services">Servicios</a></li>
-                    <li><a href="#how-it-works">Cómo Funciona</a></li>
-                    <li><a href="#testimonials">Testimonios</a></li>
-                    <li><a href="#contact">Contacto</a></li>
-                    <li><a href="#login" class="btn-secondary">Panel Cliente</a></li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
@@ -72,15 +956,15 @@
                 </div>
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <h3>50K+</h3>
+                        <h3 id="clientsCounter">50K+</h3>
                         <p>Clientes Satisfechos</p>
                     </div>
                     <div class="stat-item">
-                        <h3>99.8%</h3>
+                        <h3 id="deliveryCounter">99.8%</h3>
                         <p>Tasa de Entrega</p>
                     </div>
                     <div class="stat-item">
-                        <h3>24/7</h3>
+                        <h3 id="supportCounter">24/7</h3>
                         <p>Soporte Premium</p>
                     </div>
                 </div>
@@ -89,12 +973,10 @@
         <div class="social-icons">
             <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" class="tiktok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
-            <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="youtube"><i class="fab fa-facebook"></i></a>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
             <div class="section-title">
@@ -117,9 +999,9 @@
                     <div class="service-price">
                         $9.99 <span>/ 1,000 seguidores</span>
                     </div>
-                    <button class="btn btn-service" data-service="Instagram Growth" data-price="$9.99 / 1,000 seguidores" data-features="Entrega en 24-48 horas, Perfiles reales, Garantía de reemplazo">Comprar Ahora</button>
+                    <a href="#" class="btn open-modal" data-package="Instagram Growth" data-price="9.99">Comprar Ahora</a>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fab fa-tiktok"></i>
@@ -135,9 +1017,9 @@
                     <div class="service-price">
                         $12.99 <span>/ 1,000 seguidores</span>
                     </div>
-                    <button class="btn btn-service" data-service="TikTok Boost" data-price="$12.99 / 1,000 seguidores" data-features="Entrega súper rápida, Cuentas reales, Protección de cuenta">Comprar Ahora</button>
+                    <a href="#" class="btn open-modal" data-package="TikTok Boost" data-price="12.99">Comprar Ahora</a>
                 </div>
-                
+
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fab fa-youtube"></i>
@@ -153,13 +1035,12 @@
                     <div class="service-price">
                         $19.99 <span>/ 1,000 suscriptores</span>
                     </div>
-                    <button class="btn btn-service" data-service="YouTube Authority" data-price="$19.99 / 1,000 suscriptores" data-features="Entrega gradual, Suscriptores reales, Sin riesgo para tu canal">Comprar Ahora</button>
+                    <a href="#" class="btn open-modal" data-package="YouTube Authority" data-price="19.99">Comprar Ahora</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- How It Works Section -->
     <section id="how-it-works">
         <div class="container">
             <div class="section-title">
@@ -179,9 +1060,8 @@
                 </div>
                 <div class="step-card">
                     <div class="step-number">3</div>
-                        <h3>Proporciona tu Usuario</h3>
-                        <p>Ingresa solo tu nombre de usuario (nunca pedimos contraseñas)</p>
-                    </div>
+                    <h3>Proporciona tu Usuario</h3>
+                    <p>Ingresa solo tu nombre de usuario (nunca pedimos contraseñas)</p>
                 </div>
                 <div class="step-card">
                     <div class="step-number">4</div>
@@ -192,7 +1072,6 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <div class="container">
             <div class="section-title">
@@ -258,99 +1137,24 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
     <section class="cta" id="cta">
         <div class="container">
             <div class="cta-content">
                 <h2>¿Listo para transformar tu presencia digital?</h2>
                 <p>Únete a miles de clientes satisfechos y lleva tus redes sociales al siguiente nivel hoy mismo</p>
-                <a href="#services" class="btn">Comenzar Ahora</a>
+                <a href="#services" class="btn">Comprar Ahora</a>
             </div>
         </div>
     </section>
 
-    <!-- Modal de Métodos de Pago -->
-    <div class="payment-modal" id="paymentModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closePaymentModal">&times;</button>
-            <div class="modal-header">
-                <h3>Finalizar Compra</h3>
-            </div>
-            <div class="modal-body">
-                <div class="payment-service-info">
-                    <h4 id="paymentServiceName">Instagram Growth</h4>
-                    <p id="paymentServicePrice">$9.99 / 1,000 seguidores</p>
-                </div>
-                
-                <form class="payment-form" id="paymentForm">
-                    <div class="form-group">
-                        <label for="social-username">Usuario de Red Social:</label>
-                        <input type="text" id="social-username" required placeholder="@tunombredeusuario">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Método de Pago:</label>
-                        <div class="payment-methods">
-                            <div class="payment-method" data-method="paypal">
-                                <i class="fab fa-paypal"></i>
-                                <span>PayPal</span>
-                            </div>
-                            <div class="payment-method" data-method="mercadopago">
-                                <i class="fas fa-money-bill-wave"></i>
-                                <span>Mercado Pago</span>
-                            </div>
-                            <div class="payment-method" data-method="creditcard">
-                                <i class="far fa-credit-card"></i>
-                                <span>Tarjeta Crédito/Débito</span>
-                            </div>
-                            <div class="payment-method" data-method="oxxo">
-                                <i class="fas fa-store"></i>
-                                <span>Efectivo en OXXO</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div id="paymentDetails">
-                        <!-- Aquí se mostrarán los detalles específicos de cada método -->
-                    </div>
-                    
-                    <button type="submit" class="btn payment-btn" id="processPayment">
-                        <i class="fas fa-lock"></i> Pagar Ahora
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <!-- Modal de Confirmación de Pago -->
-    <div class="confirmation-modal" id="confirmationModal">
-        <div class="modal-content">
-            <div class="confirmation-header">
-                <i class="fas fa-check-circle"></i>
-                <h3>¡Pago Completado!</h3>
-            </div>
-            <div class="confirmation-body">
-                <p id="confirmationMessage">Tu compra se ha procesado exitosamente. Recibirás tus seguidores en las próximas 24 horas.</p>
-                <div class="order-summary">
-                    <p><strong>Servicio:</strong> <span id="confirmationService">Instagram Growth</span></p>
-                    <p><strong>Usuario:</strong> <span id="confirmationUsername">@ejemplo</span></p>
-                    <p><strong>Método:</strong> <span id="confirmationMethod">PayPal</span></p>
-                    <p><strong>ID de Transacción:</strong> <span id="transactionId">TX-789456123</span></p>
-                </div>
-                <button class="btn" id="closeConfirmationModal">Aceptar</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="contact">
+    <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-about">
                     <div class="footer-logo">
-                        <h2>Fenix<span>.net</span></h2>
+                        <img src="logo.png" alt="Fenix.net Logo">
                     </div>
-                    <p>Líderes en crecimiento de redes sociales desde 2018. Ofrecemos servicios premium para impulsar tu presencia digital con resultados inmediatos y garantizados.</p>
+                    <p>Fenix.net te ayuda a disparar tu crecimiento en redes sociales de manera segura y eficiente.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -359,39 +1163,190 @@
                     </div>
                 </div>
                 <div class="footer-links">
-                    <h4>Servicios</h4>
-                    <ul>
-                        <li><a href="#">Seguidores Instagram</a></li>
-                        <li><a href="#">Suscriptores YouTube</a></li>
-                        <li><a href="#">Seguidores TikTok</a></li>
-                        <li><a href="#">Likes y Comentarios</a></li>
-                        <li><a href="#">Servicios para Twitter</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Enlaces Rápidos</h4>
+                    <h4>Navegación</h4>
                     <ul>
                         <li><a href="#home">Inicio</a></li>
                         <li><a href="#services">Servicios</a></li>
                         <li><a href="#how-it-works">Cómo Funciona</a></li>
                         <li><a href="#testimonials">Testimonios</a></li>
-                        <li><a href="#contact">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Información</h4>
+                    <ul>
+                        <li><a href="#">Términos y Condiciones</a></li>
+                        <li><a href="#">Política de Privacidad</a></li>
+                        <li><a href="#">Preguntas Frecuentes</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
                     <h4>Contacto</h4>
-                    <p><i class="fab fa-whatsapp"></i> WhatsApp: +1 (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> soporte@fenix.net</p>
-                    <p><i class="fas fa-headset"></i> Soporte 24/7</p>
-                    <p><i class="fas fa-lock"></i> Pagos Seguros</p>
+                    <p><i class="fas fa-map-marker-alt"></i> León, Guanajuato, México</p>
+                    <p><i class="fas fa-envelope"></i> contacto@fenix.net</p>
+                    <p><i class="fas fa-phone-alt"></i> +52 1 775 150 4356</p>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2025 Fenix.net. Todos los derechos reservados. <span style="color: #777;">Este sitio no está afiliado a Instagram, TikTok, YouTube ni a ninguna de sus empresas matriz.</span></p>
+                <p>&copy; 2024 Fenix.net. Todos los derechos reservados.</p>
             </div>
         </div>
     </footer>
 
-    <script src="main.js"></script>
+    <div id="buyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p>Por favor, ingresa los datos de tu pedido para continuar.</p>
+            <div class="modal-form-group">
+                <label for="profileLinkInput">Link o URL del perfil:</label>
+                <input type="text" id="profileLinkInput" placeholder="Ej: https://www.instagram.com/tu_usuario" required>
+            </div>
+            <div class="modal-form-group">
+                <label for="paymentMethodSelect">Método de Pago:</label>
+                <select id="paymentMethodSelect" name="paymentMethod" required>
+                    <option value="Oxxo">Oxxo</option>
+                    <option value="Spei">Transferencia (SPEI)</option>
+                    <option value="PayPal">PayPal</option>
+                </select>
+            </div>
+
+            <div id="paymentInfo" class="payment-info-box">
+                </div>
+            <p class="modal-error-message" id="errorMessage">Por favor, ingresa un link de perfil válido.</p>
+            <button id="processOrderBtn" class="btn">
+                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navMenu = document.getElementById('navMenu');
+
+            mobileMenuBtn.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+
+            const navLinks = document.querySelectorAll('#navMenu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navMenu.classList.contains('active')) {
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+            const modal = document.getElementById('buyModal');
+            const closeBtn = document.querySelector('.close-btn');
+            const openBtns = document.querySelectorAll('.open-modal');
+            const modalTitle = document.getElementById('modalTitle');
+            const profileLinkInput = document.getElementById('profileLinkInput');
+            const paymentMethodSelect = document.getElementById('paymentMethodSelect');
+            const processOrderBtn = document.getElementById('processOrderBtn');
+            const errorMessage = document.getElementById('errorMessage');
+            const paymentInfoDiv = document.getElementById('paymentInfo');
+
+            let currentPackage = '';
+            let currentPrice = '';
+            let currentPaymentInfo = '';
+
+            // NUEVO: Función para actualizar la información de pago en el modal
+            const updatePaymentInfo = () => {
+                const method = paymentMethodSelect.value;
+                let infoHtml = '';
+                let infoText = '';
+
+                if (method === 'Oxxo') {
+                    infoHtml = `<h4>Pago en Oxxo</h4><p>Dirígete a cualquier tienda Oxxo y proporciona el siguiente número:</p><p><b>Número de referencia:</b> 1234 5678 9012 3456</p><p>Recuerda que se puede aplicar una comisión.</p>`;
+                    infoText = `Información de pago Oxxo: Número de referencia: 1234 5678 9012 3456. Se puede aplicar una comisión.`;
+                } else if (method === 'Spei') {
+                    infoHtml = `<h4>Transferencia SPEI</h4><p>Realiza la transferencia a los siguientes datos:</p><p><b>Banco:</b> BBVA<br><b>CLABE:</b> 012345678901234567<br><b>Beneficiario:</b> Fenix Digital S.A. de C.V.</p>`;
+                    infoText = `Información de pago SPEI: Banco: BBVA, CLABE: 012345678901234567, Beneficiario: Fenix Digital S.A. de C.V.`;
+                } else if (method === 'PayPal') {
+                    infoHtml = `<h4>Pago con PayPal</h4><p>Realiza el pago a nuestra cuenta de PayPal:</p><p><b>Correo:</b> pago@fenix.net</p><p>Asegúrate de enviar el pago como "amigos o familiares" para evitar comisiones.</p>`;
+                    infoText = `Información de pago PayPal: Correo: pago@fenix.net. Por favor, realiza el pago como "amigos o familiares" para evitar comisiones.`;
+                }
+
+                paymentInfoDiv.innerHTML = infoHtml;
+                currentPaymentInfo = infoText;
+            };
+
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    currentPackage = btn.getAttribute('data-package');
+                    currentPrice = btn.getAttribute('data-price');
+
+                    modalTitle.textContent = `Comprar ${currentPackage}`;
+                    errorMessage.style.display = 'none';
+                    modal.classList.add('show');
+                    
+                    // Asegurar que se cargue la info de pago inicial
+                    updatePaymentInfo();
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                modal.classList.remove('show');
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('show');
+                }
+            });
+
+            // NUEVO: Escuchar el cambio en el select para actualizar la info de pago
+            paymentMethodSelect.addEventListener('change', updatePaymentInfo);
+
+
+            processOrderBtn.addEventListener('click', () => {
+                const profileLink = profileLinkInput.value.trim();
+                const paymentMethod = paymentMethodSelect.value;
+
+                if (profileLink === '') {
+                    errorMessage.style.display = 'block';
+                    return;
+                }
+
+                const orderId = 'FNX' + Date.now().toString().slice(-6);
+                const date = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
+
+                const whatsappMessage = `Hola!%0A%0AGracias por adquirir tu paquete :)%0A- Id pedido: ${orderId}%0A- Paquete Adquirido: ${currentPackage} ($${currentPrice})%0A- Fecha: ${date}%0A- Link del perfil: ${profileLink}%0A%0A- Método de pago: ${paymentMethod}%0A%0A${currentPaymentInfo}%0A%0APor favor, envía tu comprobante de pago a este número para procesar tu pedido.`;
+
+                const whatsappUrl = `https://wa.me/5217751504356?text=${encodeURIComponent(whatsappMessage)}`;
+
+                window.open(whatsappUrl, '_blank');
+                modal.classList.remove('show');
+            });
+
+            function countUp(elementId, start, end, duration) {
+                let startTimestamp = null;
+                const element = document.getElementById(elementId);
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    element.textContent = Math.floor(progress * (end - start) + start) + (element.id === 'clientsCounter' ? 'K+' : '%');
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        countUp('clientsCounter', 0, 50, 2000);
+                        countUp('deliveryCounter', 0, 99.8, 2000);
+                        countUp('supportCounter', 0, 24, 2000);
+                        observer.disconnect();
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(document.getElementById('clientsCounter'));
+        });
+    </script>
 </body>
 </html>
