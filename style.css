@@ -12,7 +12,7 @@
 
 * {  
     margin: 0;
-    padding: 0;
+    padding: 0; 
     box-sizing: border-box;
 }
 
@@ -371,12 +371,16 @@ a{
 }
 
 .service-icon {
+    display: flex;
+    gap: 30px;
     font-size: 3.5rem;
     margin-bottom: 25px;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+    align-items: center;
+    justify-content: center;
 }
 
 .service-card h3 {
@@ -881,6 +885,11 @@ footer {
     pointer-events: auto;
 }
 
+/* Estilos específicos para cada modal */
+#followersModal, #likesModal {
+    /* Heredan los estilos base de .modal */
+}
+
 .modal-content {
     background: var(--card-bg);
     margin: auto;
@@ -947,6 +956,11 @@ footer {
     color: var(--light);
     font-size: 1rem;
     transition: border-color 0.3s ease;
+}
+
+/* Estilos para el selector de plataforma */
+.platform-select {
+    margin-bottom: 5px;
 }
 
 .modal-form-group input:focus, .modal-form-group select:focus {
