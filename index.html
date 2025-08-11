@@ -89,7 +89,7 @@
                         <li>Compatible con cuentas personales o de negocio</li>
                     </ul>
                     <div class="service-price">
-                        $105 <span>/ 1,000 seguidores</span>
+                        $109 <span>/ 1,000 seguidores</span>
                     </div>
                     <a href="#" class="btn open-modal followers-btn" data-package="Instagram Growth" data-price="105">Comprar Ahora</a>
                 </div>
@@ -109,7 +109,7 @@
                         <li>Atención al cliente 24/7</li>
                     </ul>
                     <div class="service-price">
-                        $105 <span>/ 1,000 likes</span>
+                        $59 <span>/ 1,000 likes</span>
                     </div>
                     <a href="#" class="btn open-modal likes-btn" data-package="TikTok Boost" data-price="120">Comprar Ahora</a>
                 </div>
@@ -245,18 +245,18 @@
                         <li><a href="#testimonials">Testimonios</a></li>
                     </ul>
                 </div>
-                <div class="footer-links">
+                <!-- <div class="footer-links">
                     <h4>Información</h4>
                     <ul>
                         <li><a href="#">Términos y Condiciones</a></li>
                         <li><a href="#">Política de Privacidad</a></li>
                         <li><a href="#">Preguntas Frecuentes</a></li>
                     </ul>
-                </div>
+                </div> -->
                 <div class="footer-contact">
                     <h4>Contacto</h4>
                     <p><i class="fas fa-map-marker-alt"></i> León, Guanajuato, México</p>
-                    <p><i class="fas fa-envelope"></i> contacto@fenix.net</p>
+                    <p><i class="fas fa-envelope"></i>soporte@fenixsm.com</p>
                     <p><i class="fas fa-phone-alt"></i> +52 1 775 150 4356</p>
                 </div>
             </div>
@@ -287,15 +287,20 @@
             <div class="modal-form-group">
                 <label for="followersCountSelect">Cantidad de seguidores:</label>
                 <select id="followersCountSelect" name="followersCount" required>
-                    <option value="250" data-price="50">250 seguidores - $50</option>
-                    <option value="500" data-price="65">500 seguidores - $65</option>
-                    <option value="1000" data-price="105" selected>1,000 seguidores - $105</option>
-                    <option value="2500" data-price="255">2,500 seguidores - $255</option>
-                    <option value="5000" data-price="375">5,000 seguidores - $375</option>
-                    <option value="10000" data-price="695">10,000 seguidores - $695</option>
-                    <option value="15000" data-price="1249">15,000 seguidores - $1,249</option>
-                    <option value="20000" data-price="1599">20,000 seguidores - $1,599</option>
+                    <option value="500" data-price="69">500 seguidores - $69</option>
+                    <option value="1000" data-price="109" selected>1,000 seguidores - $109</option>
+                    <option value="3000" data-price="299">3,000 seguidores - $299</option>
+                    <option value="5000" data-price="399">5,000 seguidores - $399</option>
+                    <option value="10000" data-price="749">10,000 seguidores - $749</option>
+                    <option value="20000" data-price="1299">20,000 seguidores - $1,299</option>
+                    <option value="50000" data-price="2499">50,000 seguidores - $2,499</option>
+                    <option value="100000" data-price="4399">100,000 seguidores - $4,399</option>
+                    <option value="custom" data-price="0">Cantidad personalizada</option>
                 </select>
+                <div id="customFollowersInput" style="display: none; margin-top: 10px;">
+                    <label for="customFollowersCount">Ingrese la cantidad de seguidores:</label>
+                    <input type="number" id="customFollowersCount" placeholder="Min: 500" min="500">
+                </div>
             </div>
             <div class="modal-form-group">
                 <label for="paymentMethodSelectFollowers">Método de Pago:</label>
@@ -305,16 +310,167 @@
                 </select>
             </div>
             <div class="total-price-box">
-                <p>Precio total: <span id="totalPriceFollowers">$105</span></p>
+                <p>Precio total: <span id="totalPriceFollowers">Consulte el precio de los seguidores elegidos</span></p>
             </div>
             <div id="paymentInfoFollowers" class="payment-info-box">
             </div>
             <p class="modal-error-message" id="errorMessageFollowers">Por favor, ingresa un link de perfil válido.</p>
             <button id="processOrderBtnFollowers" class="btn">
-                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                <i class="fab fa-whatsapp"></i> Mandar comprobante de pago
             </button>
         </div>
     </div>
+
+    <!-- Modal para Términos y Condiciones -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Términos y Condiciones</h2>
+            <div class="terms-content">
+                <h3>1. Aceptación de los Términos</h3>
+                <p>Al utilizar los servicios de Fenix.net, usted acepta cumplir con estos términos y condiciones en su totalidad. Si no está de acuerdo con alguno de estos términos, no debe utilizar nuestros servicios.</p>
+                
+                <h3>2. Descripción del Servicio</h3>
+                <p>Fenix.net ofrece servicios de crecimiento en redes sociales, incluyendo pero no limitado a la provisión de seguidores, likes y otros servicios de engagement para plataformas como Instagram, TikTok y Facebook.</p>
+                
+                <h3>3. Uso Aceptable</h3>
+                <p>El cliente acepta utilizar nuestros servicios de manera ética y de acuerdo con las políticas de las plataformas de redes sociales. Fenix.net no se hace responsable por cualquier suspensión o penalización que su cuenta pueda sufrir por parte de las plataformas.</p>
+                
+                <h3>4. Política de Reembolsos</h3>
+                <p>Todos los servicios son no reembolsables una vez que el pedido ha sido procesado. En caso de problemas con la entrega, Fenix.net ofrecerá reemplazos o créditos según su criterio.</p>
+                
+                <h3>5. Garantías</h3>
+                <p>Fenix.net no garantiza resultados específicos en cuanto a crecimiento orgánico o monetización de cuentas. Los servicios proporcionados son para aumentar métricas cuantitativas solamente.</p>
+                
+                <h3>6. Limitación de Responsabilidad</h3>
+                <p>Fenix.net no será responsable por daños indirectos, incidentales o consecuentes resultantes del uso de nuestros servicios.</p>
+                
+                <h3>7. Modificaciones</h3>
+                <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en el sitio web.</p>
+                
+                <h3>8. Ley Aplicable</h3>
+                <p>Estos términos se regirán e interpretarán de acuerdo con las leyes de México, sin dar efecto a ningún principio de conflictos de leyes.</p>
+                
+                <p><strong>Fecha de última actualización:</strong> 11 de enero de 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Política de Privacidad -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Política de Privacidad</h2>
+            <div class="privacy-content">
+                <h3>1. Información que Recopilamos</h3>
+                <p>Recopilamos información que usted nos proporciona directamente, como nombre, información de contacto, nombre de usuario de redes sociales y detalles de transacciones.</p>
+                
+                <h3>2. Uso de la Información</h3>
+                <p>Utilizamos su información para:
+                    <ul>
+                        <li>Procesar y completar sus pedidos</li>
+                        <li>Proporcionar soporte al cliente</li>
+                        <li>Mejorar nuestros servicios</li>
+                        <li>Cumplir con obligaciones legales</li>
+                    </ul>
+                </p>
+                
+                <h3>3. Compartir Información</h3>
+                <p>No vendemos ni compartimos su información personal con terceros, excepto:
+                    <ul>
+                        <li>Proveedores de servicios que nos ayudan a operar nuestro negocio</li>
+                        <li>Cuando sea requerido por ley</li>
+                        <li>Para proteger nuestros derechos o seguridad</li>
+                    </ul>
+                </p>
+                
+                <h3>4. Seguridad de Datos</h3>
+                <p>Implementamos medidas de seguridad razonables para proteger su información personal, aunque ningún sistema es 100% seguro.</p>
+                
+                <h3>5. Cookies y Tecnologías Similares</h3>
+                <p>Utilizamos cookies para mejorar la experiencia del usuario y analizar el tráfico del sitio. Puede configurar su navegador para rechazar cookies.</p>
+                
+                <h3>6. Derechos del Usuario</h3>
+                <p>Usted tiene derecho a:
+                    <ul>
+                        <li>Acceder a sus datos personales</li>
+                        <li>Solicitar corrección o eliminación</li>
+                        <li>Oponerse al procesamiento</li>
+                        <li>Solicitar limitación del tratamiento</li>
+                    </ul>
+                </p>
+                
+                <h3>7. Cambios a esta Política</h3>
+                <p>Podemos actualizar esta política ocasionalmente. Le notificaremos sobre cambios significativos.</p>
+                
+                <h3>8. Contacto</h3>
+                <p>Para preguntas sobre esta política, contáctenos en soporte@fenixsm.com</p>
+                
+                <p><strong>Fecha de última actualización:</strong> 11 de enero de 2024</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para Preguntas Frecuentes -->
+    <div id="faqModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Preguntas Frecuentes</h2>
+            <div class="faq-content">
+                <div class="faq-item">
+                    <h3>¿Cómo funciona el servicio?</h3>
+                    <p>Una vez que completes tu compra y nos envíes tu nombre de usuario, comenzaremos a procesar tu pedido. Los seguidores/likes comenzarán a llegar en el plazo establecido (generalmente 24-48 horas).</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Los seguidores/likes son reales?</h3>
+                    <p>Nuestros servicios utilizan cuentas reales y activas, pero no son seguidores orgánicos. Son perfiles reales que interactúan con contenido.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Es seguro para mi cuenta?</h3>
+                    <p>Hemos diseñado nuestros servicios para minimizar riesgos. Sin embargo, recomendamos no abusar de cantidades muy grandes en cuentas nuevas o pequeñas.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Cuánto tiempo tardan en llegar?</h3>
+                    <p>El tiempo de entrega varía según el paquete:
+                        <ul>
+                            <li>Paquetes pequeños (1,000-5,000): 24-48 horas</li>
+                            <li>Paquetes medianos (5,000-20,000): 2-4 días</li>
+                            <li>Paquetes grandes (20,000+): 4-7 días</li>
+                        </ul>
+                    </p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Ofrecen garantía?</h3>
+                    <p>Sí, ofrecemos garantía de reemplazo por cualquier caída significativa (más del 20%) dentro de los primeros 30 días.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Necesitan mi contraseña?</h3>
+                    <p>¡No! Nunca pedimos ni necesitamos tu contraseña. Solo requerimos tu nombre de usuario o enlace de perfil.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Qué métodos de pago aceptan?</h3>
+                    <p>Aceptamos Mercado Pago, transferencias SPEI y PayPal. Todos los pagos son seguros y encriptados.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Puedo cancelar mi pedido?</h3>
+                    <p>Puedes cancelar antes de que comencemos a procesar tu pedido. Una vez iniciado el proceso, no se pueden hacer reembolsos.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3>¿Cómo contacto al soporte?</h3>
+                    <p>Puedes contactarnos por WhatsApp al +52 1 775 150 4356 o por correo a soporte@fenixsm.com. Atendemos 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
             
     <!-- Modal para Likes -->
     <div id="likesModal" class="modal">
@@ -332,17 +488,22 @@
             </div>
             <div class="modal-form-group">
                 <label for="profileLinkInputLikes">Link o URL de la publicación:</label>
-                <input type="text" id="profileLinkInputLikes" placeholder="Ej: https://www.instagram.com/p/codigo" required>
+                <input type="text" id="profileLinkInputLikes" placeholder="Ej: https://www.instagram.com/tu_usuario" required>
             </div>
             <div class="modal-form-group">
                 <label for="likesCountSelect">Cantidad de likes:</label>
                 <select id="likesCountSelect" name="likesCount" required>
-                    <option value="500" data-price="50">500 likes - $45</option>
-                    <option value="1000" data-price="65">1,000 likes - $59</option>
-                    <option value="5000" data-price="105" selected>5,000 likes - $99</option>
-                    <option value="10000" data-price="255">10,000 likes - $109</option>
-                    <option value="25000" data-price="375">25,000 likes - $195</option>
+                    <option value="500" data-price="45">500 likes - $45</option>
+                    <option value="1000" data-price="59">1,000 likes - $59</option>
+                    <option value="5000" data-price="99" selected>5,000 likes - $99</option>
+                    <option value="10000" data-price="109">10,000 likes - $109</option>
+                    <option value="25000" data-price="195">25,000 likes - $195</option>
+                    <option value="custom" data-price="0">Cantidad personalizada</option>
                 </select>
+                <div id="customLikesInput" style="display: none; margin-top: 10px;">
+                    <label for="customLikesCount">Ingrese la cantidad de likes:</label>
+                    <input type="number" id="customLikesCount" placeholder="Min: 500" min="500">
+                </div>
             </div>
             <div class="modal-form-group">
                 <label for="paymentMethodSelectLikes">Método de Pago:</label>
@@ -352,16 +513,17 @@
                 </select>
             </div>
             <div class="total-price-box">
-                <p>Precio total: <span id="totalPriceLikes">$105</span></p>
+                <p>Precio total: <span id="totalPriceLikes">Consulte el precio de los likes elegidos</span></p>
             </div>
             <div id="paymentInfoLikes" class="payment-info-box">
             </div>
             <p class="modal-error-message" id="errorMessageLikes">Por favor, ingresa un link de publicación válido.</p>
             <button id="processOrderBtnLikes" class="btn">
-                <i class="fab fa-whatsapp"></i> Contactar por WhatsApp
+                <i class="fab fa-whatsapp"></i> Mandar comprobante de pago
             </button>
         </div>
     </div>
+
 
     <style>
           .payment-header {
@@ -422,6 +584,120 @@
             const errorMessageLikes = document.getElementById('errorMessageLikes');
             const paymentInfoDivLikes = document.getElementById('paymentInfoLikes');
             const totalPriceSpanLikes = document.getElementById('totalPriceLikes');
+
+            document.addEventListener('DOMContentLoaded', () => {
+                // ... (código existente hasta la línea 2500 aproximadamente)
+                
+                // Función para manejar los modales de términos, privacidad y FAQ
+                function setupInfoModals() {
+                    // Seleccionar los enlaces usando texto específico
+                    const termsLink = Array.from(document.querySelectorAll('a')).find(a => a.textContent.trim() === 'Términos y Condiciones');
+                    const privacyLink = Array.from(document.querySelectorAll('a')).find(a => a.textContent.trim() === 'Política de Privacidad');
+                    const faqLink = Array.from(document.querySelectorAll('a')).find(a => a.textContent.trim() === 'Preguntas Frecuentes');
+                    
+                    // Seleccionar los modales
+                    const termsModal = document.getElementById('termsModal');
+                    const privacyModal = document.getElementById('privacyModal');
+                    const faqModal = document.getElementById('faqModal');
+                    
+                    // Verificar que los modales existen
+                    if (!termsModal || !privacyModal || !faqModal) {
+                        console.error('Uno o más modales no fueron encontrados');
+                        return;
+                    }
+                    
+                    // Seleccionar botones de cierre
+                    const termsClose = termsModal.querySelector('.close-btn');
+                    const privacyClose = privacyModal.querySelector('.close-btn');
+                    const faqClose = faqModal.querySelector('.close-btn');
+                    
+                    // Función para abrir modal
+                    function openModal(modal) {
+                        modal.classList.add('show');
+                        document.body.style.overflow = 'hidden';
+                    }
+                    
+                    // Función para cerrar modal
+                    function closeModal(modal) {
+                        modal.classList.remove('show');
+                        document.body.style.overflow = 'auto';
+                    }
+                    
+                    // Asignar eventos a los enlaces
+                    if (termsLink) {
+                        termsLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openModal(termsModal);
+                        });
+                    } else {
+                        console.warn('Enlace de Términos y Condiciones no encontrado');
+                    }
+                    
+                    if (privacyLink) {
+                        privacyLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openModal(privacyModal);
+                        });
+                    } else {
+                        console.warn('Enlace de Política de Privacidad no encontrado');
+                    }
+                    
+                    if (faqLink) {
+                        faqLink.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            openModal(faqModal);
+                        });
+                    } else {
+                        console.warn('Enlace de Preguntas Frecuentes no encontrado');
+                    }
+                    
+                    // Asignar eventos a los botones de cierre
+                    if (termsClose) {
+                        termsClose.addEventListener('click', () => closeModal(termsModal));
+                    }
+                    
+                    if (privacyClose) {
+                        privacyClose.addEventListener('click', () => closeModal(privacyModal));
+                    }
+                    
+                    if (faqClose) {
+                        faqClose.addEventListener('click', () => closeModal(faqModal));
+                    }
+                    
+                    // Cerrar al hacer clic fuera del modal
+                    window.addEventListener('click', (e) => {
+                        if (e.target === termsModal) {
+                            closeModal(termsModal);
+                        }
+                        if (e.target === privacyModal) {
+                            closeModal(privacyModal);
+                        }
+                        if (e.target === faqModal) {
+                            closeModal(faqModal);
+                        }
+                    });
+                    
+                    // Cerrar con tecla Escape
+                    document.addEventListener('keydown', (e) => {
+                        if (e.key === 'Escape') {
+                            if (termsModal.classList.contains('show')) {
+                                closeModal(termsModal);
+                            }
+                            if (privacyModal.classList.contains('show')) {
+                                closeModal(privacyModal);
+                            }
+                            if (faqModal.classList.contains('show')) {
+                                closeModal(faqModal);
+                            }
+                        }
+                    });
+                }
+                
+                // Llamar a la función de configuración
+                setupInfoModals();
+                
+                // ... (resto del código existente)
+            });
             
             // Ya no necesitamos esta variable ya que ahora usamos selectores específicos
             // const openBtns = document.querySelectorAll('.open-modal');
@@ -439,19 +715,39 @@
             // Función para actualizar el precio total de seguidores
             const updateFollowersTotalPrice = () => {
                 const selectedOption = followersCountSelect.options[followersCountSelect.selectedIndex];
-                const price = selectedOption.getAttribute('data-price');
-                totalPriceSpanFollowers.textContent = `$${price}`;
-                currentPrice = price;
-                currentCount = selectedOption.value;
+                const customInput = document.getElementById('customFollowersInput');
+                
+                if (selectedOption.value === 'custom') {
+                    customInput.style.display = 'block';
+                    totalPriceSpanFollowers.textContent = 'Consulte el precio de los seguidores elegidos';
+                    currentPrice = '0';
+                    currentCount = 'custom';
+                } else {
+                    customInput.style.display = 'none';
+                    const price = selectedOption.getAttribute('data-price');
+                    totalPriceSpanFollowers.textContent = 'Consulte el precio de los seguidores elegidos';
+                    currentPrice = price;
+                    currentCount = selectedOption.value;
+                }
             };
             
             // Función para actualizar el precio total de likes
             const updateLikesTotalPrice = () => {
                 const selectedOption = likesCountSelect.options[likesCountSelect.selectedIndex];
-                const price = selectedOption.getAttribute('data-price');
-                totalPriceSpanLikes.textContent = `$${price}`;
-                currentPrice = price;
-                currentCount = selectedOption.value;
+                const customInput = document.getElementById('customLikesInput');
+                
+                if (selectedOption.value === 'custom') {
+                    customInput.style.display = 'block';
+                    totalPriceSpanLikes.textContent = 'Consulte el precio de los likes elegidos';
+                    currentPrice = '0';
+                    currentCount = 'custom';
+                } else {
+                    customInput.style.display = 'none';
+                    const price = selectedOption.getAttribute('data-price');
+                    totalPriceSpanLikes.textContent = 'Consulte el precio de los likes elegidos';
+                    currentPrice = price;
+                    currentCount = selectedOption.value;
+                }
             };
 
             // Función para actualizar la información de pago en el modal de seguidores
@@ -461,8 +757,8 @@
                 let infoText = '';
 
                 if (method === 'MercadoPago') {
-                    infoHtml = `<div class="payment-header"><img src="Mercado-Pago.png" alt="Mercado Pago Logo" width="50" class="payment-icon"><h4>Pago con Mercado Pago</h4></div><p>Realiza tu pago a través de nuestro enlace de Mercado Pago:</p><p><b>Link de pago:</b> <a href="http://biolibre.mx/fenixdigital" target="_blank">http://biolibre.mx/fenixdigital</a></p>`;
-                    infoText = `Información de pago Mercado Pago: Link de pago: http://biolibre.mx/fenixdigital`;
+                    infoHtml = `<div class="payment-header"><img src="Mercado-Pago.png" alt="Mercado Pago Logo" width="50" class="payment-icon"><h4>Pago con Mercado Pago</h4></div><p>Realiza tu pago a través de nuestro enlace de Mercado Pago:</p><p><b>Link de pago:</b> <a href="http://link.mercadopago.com.mx/fenixdigitalstore" target="_blank">Pagar en mercado pago</a></p>`;
+                    infoText = `Información de pago Mercado Pago: Link de pago: http://link.mercadopago.com.mx/fenixdigitalstore`;
                 } else if (method === 'Spei') {
                     infoHtml = `<div class="payment-header"><img src="spei-logo.png" alt="SPEI Logo" width="50" class="payment-icon"><h4>Transferencia SPEI</h4></div><p>Realiza la transferencia a los siguientes datos:</p><p><b>Banco:</b> Santander<br><b>Número de cuenta:</b> 5579100421039650<br><b>Beneficiario:</b> Fenix Digital S.A. de C.V.</p>`;
                     infoText = `Información de pago SPEI: Banco: Santander, Número de cuenta: 5579100421039650, Beneficiario: Fenix Digital S.A. de C.V.`;
@@ -482,8 +778,8 @@
                 let infoText = '';
 
                 if (method === 'MercadoPago') {
-                    infoHtml = `<div class="payment-header"><img src="Mercado-Pago.png" alt="Mercado Pago Logo" width="50" class="payment-icon"><h4>Pago con Mercado Pago</h4></div><p>Realiza tu pago a través de nuestro enlace de Mercado Pago:</p><p><b>Link de pago:</b> <a href="http://biolibre.mx/fenixdigital" target="_blank">http://biolibre.mx/fenixdigital</a></p>`;
-                    infoText = `Información de pago Mercado Pago: Link de pago: http://biolibre.mx/fenixdigital`;
+                    infoHtml = `<div class="payment-header"><img src="Mercado-Pago.png" alt="Mercado Pago Logo" width="50" class="payment-icon"><h4>Pago con Mercado Pago</h4></div><p>Realiza tu pago a través de nuestro enlace de Mercado Pago:</p><p><b>Link de pago:</b> <a href="http://link.mercadopago.com.mx/fenixdigitalstore" target="_blank">Pagar en mercado pago</a></p>`;
+                    infoText = `Información de pago Mercado Pago: Link de pago: http://link.mercadopago.com.mx/fenixdigitalstore`;
                 } else if (method === 'Spei') {
                     infoHtml = `<div class="payment-header"><img src="spei-logo.png" alt="SPEI Logo" width="50" class="payment-icon"><h4>Transferencia SPEI</h4></div><p>Realiza la transferencia a los siguientes datos:</p><p><b>Banco:</b> Santander<br><b>Número de cuenta:</b> 5579100421039650<br><b>Beneficiario:</b> Fenix Digital S.A. de C.V.</p>`;
                     infoText = `Información de pago SPEI: Banco: Santander, Número de cuenta: 5579100421039650, Beneficiario: Fenix Digital S.A. de C.V.`;
@@ -595,10 +891,21 @@
                     return;
                 }
 
+                // Obtener la cantidad correcta
+                let finalCount = currentCount;
+                if (currentCount === 'custom') {
+                    const customValue = document.getElementById('customFollowersCount').value;
+                    if (!customValue || customValue <= 0) {
+                        alert('Por favor, ingrese una cantidad válida de seguidores.');
+                        return;
+                    }
+                    finalCount = customValue;
+                }
+
                 const orderId = 'FNX' + Date.now().toString().slice(-6);
                 const date = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
 
-                const whatsappMessage = `Hola!\n\nGracias por adquirir tu paquete :)\n- Id pedido: ${orderId}\n- Plataforma: ${platform}\n- Paquete Adquirido: Seguidores (${currentCount} seguidores)\n- Precio: $${currentPrice}\n- Fecha: ${date}\n- Link del perfil: ${profileLink}\n\n- Método de pago: ${paymentMethod}\n\n${currentFollowersPaymentInfo}\n\nPor favor, envía tu comprobante de pago a este número para procesar tu pedido.`;
+                const whatsappMessage = `Hola!\n\nGracias por adquirir tu paquete :)\n- Id pedido: ${orderId}\n- Plataforma: ${platform}\n- Paquete Adquirido: Seguidores (${finalCount} seguidores)\n- Precio: Consultar\n- Fecha: ${date}\n- Link del perfil: ${profileLink}\n\n- Método de pago: ${paymentMethod}\n\n${currentFollowersPaymentInfo}\n\nPor favor, consulte el precio y envíe su comprobante de pago a este número para procesar su pedido.`;
 
                 const whatsappUrl = `https://wa.me/5217751504356?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -617,10 +924,21 @@
                     return;
                 }
 
+                // Obtener la cantidad correcta
+                let finalCount = currentCount;
+                if (currentCount === 'custom') {
+                    const customValue = document.getElementById('customLikesCount').value;
+                    if (!customValue || customValue <= 0) {
+                        alert('Por favor, ingrese una cantidad válida de likes.');
+                        return;
+                    }
+                    finalCount = customValue;
+                }
+
                 const orderId = 'FNX' + Date.now().toString().slice(-6);
                 const date = new Date().toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' });
 
-                const whatsappMessage = `Hola!\n\nGracias por adquirir tu paquete :)\n- Id pedido: ${orderId}\n- Plataforma: ${platform}\n- Paquete Adquirido: Likes (${currentCount} likes)\n- Precio: $${currentPrice}\n- Fecha: ${date}\n- Link de la publicación: ${profileLink}\n\n- Método de pago: ${paymentMethod}\n\n${currentLikesPaymentInfo}\n\nPor favor, envía tu comprobante de pago a este número para procesar tu pedido.`;
+                const whatsappMessage = `Hola!\n\nGracias por adquirir tu paquete :)\n- Id pedido: ${orderId}\n- Plataforma: ${platform}\n- Paquete Adquirido: Likes (${finalCount} likes)\n- Precio: Consultar\n- Fecha: ${date}\n- Link de la publicación: ${profileLink}\n\n- Método de pago: ${paymentMethod}\n\n${currentLikesPaymentInfo}\n\nPor favor, consulte el precio y envíe su comprobante de pago a este número para procesar su pedido.`;
 
                 const whatsappUrl = `https://wa.me/5217751504356?text=${encodeURIComponent(whatsappMessage)}`;
 
