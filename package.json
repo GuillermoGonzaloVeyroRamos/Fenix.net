@@ -1,0 +1,32 @@
+{
+  "name": "fenix.net",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuillermoGonzaloVeyroRamos/Fenix.net.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GuillermoGonzaloVeyroRamos/Fenix.net/issues"
+  },
+  "homepage": "https://github.com/GuillermoGonzaloVeyroRamos/Fenix.net#readme",
+  "devDependencies": {
+    "gulp-clean-css": "^4.3.0",
+    "gulp-imagemin": "^9.2.0",
+    "gulp-uglify-es": "^3.0.0",
+    "imagemin-mozjpeg": "^10.0.0",
+    "imagemin-optipng": "^8.0.0",
+    "imagemin-webp": "^6.1.0"
+  },
+  "dependencies": {
+    "gulp": "^5.0.1"
+  }
+}

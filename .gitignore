@@ -1,0 +1,50 @@
+# ----------------------------------------------------
+# 1. DEPENDENCIAS Y PACKAGES
+# ----------------------------------------------------
+# Ignorar todos los módulos de node
+/node_modules
+
+# Archivos de configuración y logs generados por NPM
+npm-debug.log*
+.npm
+.eslintcache
+
+# ----------------------------------------------------
+# 2. DIRECTORIOS DE CONSTRUCCIÓN Y DISTRIBUCIÓN
+# ----------------------------------------------------
+# El directorio 'dist' generado por Gulp (ya que lo reconstruyes)
+/dist
+
+# Archivos de Gulp o Webpack temporales o de caché
+/temp
+.cache
+
+# ----------------------------------------------------
+# 3. ARCHIVOS DE SISTEMA OPERATIVO Y EDITORES
+# ----------------------------------------------------
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
+
+# IDEs de JetBrains (WebStorm, etc.)
+.idea/
+
+# ----------------------------------------------------
+# 4. ARCHIVOS TEMPORALES Y DE COPIAS DE SEGURIDAD
+# ----------------------------------------------------
+# Archivos de swap de Vim/Nano
+*~
+# Archivos de copia de seguridad
+#*#
+
+# ----------------------------------------------------
+# 5. ARCHIVOS SECRETOS
+# ----------------------------------------------------
+# Variables de entorno local
+.env
+.env.*.local
